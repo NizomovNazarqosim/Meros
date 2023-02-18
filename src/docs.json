@@ -1,0 +1,1960 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Backend side of Meros website",
+    "version": "1.0.11"
+  },
+  "tags": [
+    {
+      "name": "Meros",
+      "description": "Meros online shopping system"
+    },
+    {
+      "name": "Template",
+      "description": "Api"
+    }
+  ],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "tags": ["Users part"],
+        "summary": "Registration part",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/swaggerschema/UsersRegister"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "User successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "firstName": "sadefvdg"
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": ["Users part"],
+        "summary": "Login user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/swaggerschema/UsersLogin"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Student not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/users/logout": {
+      "post": {
+        "tags": ["Users part"],
+        "summary": "Logout user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/swaggerschema/UsersLogout"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/swaggerschema/UsersLogout"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Student not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/users/create/admin": {
+      "post": {
+        "tags": ["Users part"],
+        "summary": "adding new admin part",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/swaggerschema/UsersRegister"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Admin successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "firstName": "sadefvdg"
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/users/update": {
+      "patch": {
+        "tags": ["Users part"],
+        "summary": "update user information",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/swaggerschema/UsersRegister"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "firstName": "sadefvdg"
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/categories/get": {
+      "get": {
+        "tags": ["Categories part"],
+        "summary": "get all categories",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/swaggerschema/Categories"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "id": "d80eed01-6a30-4a9a-8d81-a10db45455ea",
+                          "category_title": "Kitoblar",
+                          "subCategory": [
+                            {
+                              "id": "8fc1655e-fd2e-4cf0-b7b1-24b62b6df19b",
+                              "sub_category_title": "Uzbek adabiyoti"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/categories/add": {
+      "post": {
+        "tags": ["Categories part"],
+        "summary": "add new category",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "category_title": "Uzbek adabiyoti"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "id": "d80eed01-6a30-4a9a-8d81-a10db45455ea",
+                          "category_title": "Kitoblar",
+                          "subCategory": [
+                            {
+                              "id": "8fc1655e-fd2e-4cf0-b7b1-24b62b6df19b",
+                              "sub_category_title": "Uzbek adabiyoti"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/categories/update/{categoryId}": {
+      "patch": {
+        "tags": ["Categories part"],
+        "summary": "update category",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "categoryId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "title": "Uzbekcha adabiyoti"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/categories/delete/{categoryId}": {
+      "delete": {
+        "tags": ["Categories part"],
+        "summary": " category delete",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "categoryId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/subcategories/get": {
+      "get": {
+        "tags": ["Sub_Categories part"],
+        "summary": "get all sub_categories",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "id": "d80eed01-6a30-4a9a-8d81-a10db45455ea",
+                          "sub_category_title": "Uzbek adabiyoti",
+                          "sub_type": [
+                            {
+                              "id": "8fc1655e-fd2e-4cf0-b7b1-24b62b6df19b",
+                              "sub_type_title": "Jadidchilar"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/subcategories/add": {
+      "post": {
+        "tags": ["Sub_Categories part"],
+        "summary": "add new category",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "sub_category_title": "Rus adabiyoti",
+                  "category_id": "4d40e6fd-d961-49a1-b7cc-028a1fc927d7"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "id": "d80eed01-6a30-4a9a-8d81-a10db45455ea",
+                          "category_title": "Kitoblar",
+                          "subCategory": [
+                            {
+                              "id": "8fc1655e-fd2e-4cf0-b7b1-24b62b6df19b",
+                              "sub_category_title": "Uzbek adabiyoti"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/subcategories/update/{subId}": {
+      "patch": {
+        "tags": ["Sub_Categories part"],
+        "summary": "update category",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "subId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "title": "Osiyo adabiyoti"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/subcategories/delete/{subId}": {
+      "delete": {
+        "tags": ["Sub_Categories part"],
+        "summary": " category delete",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "subId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/subtypes/get": {
+      "get": {
+        "tags": ["Sub_Types part"],
+        "summary": "get all sub_categories",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "id": "d80eed01-6a30-4a9a-8d81-a10db45455ea",
+                          "sub_type_title": "Uzbek adabiyoti",
+                          "products": [
+                            {
+                              "id": "8fc1655e-fd2e-4cf0-b7b1-24b62b6df19b",
+                              "products_title": "Clean code"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/subtypes/add": {
+      "post": {
+        "tags": ["Sub_Types part"],
+        "summary": "add new sub type",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "title": "Ertaklar",
+                  "subCategoryId": "99978e6a-6f0e-49e9-80cd-d15bf631dd69"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "id": "d80eed01-6a30-4a9a-8d81-a10db45455ea",
+                          "category_title": "Kitoblar",
+                          "subCategory": [
+                            {
+                              "id": "8fc1655e-fd2e-4cf0-b7b1-24b62b6df19b",
+                              "sub_category_title": "Uzbek adabiyoti"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/subtypes/update/{typeId}": {
+      "patch": {
+        "tags": ["Sub_Types part"],
+        "summary": "update sub type",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "typeId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "sub_type_title": "Ertaklar haqida"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/subtypes/delete/{typeId}": {
+      "delete": {
+        "tags": ["Sub_Types part"],
+        "summary": " sub type  delete",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "typeId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/get": {
+      "get": {
+        "tags": ["Products part"],
+        "summary": "get all products",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "id": "d80eed01-6a30-4a9a-8d81-a10db45455ea",
+                          "product_title": "Uzbek adabiyoti",
+                          "product_price": 21000
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/add": {
+      "post": {
+        "tags": ["Products part"],
+        "summary": "add new product",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "title": "Harry Poter",
+                  "price": "43000",
+                  "made_in": "UK",
+                  "img": "http://books.com",
+                  "subTypeId": "cdb49e50-5aae-4fd0-9796-4ea43ba860ba"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "id": "d80eed01-6a30-4a9a-8d81-a10db45455ea",
+                          "category_title": "Kitoblar",
+                          "subCategory": [
+                            {
+                              "id": "8fc1655e-fd2e-4cf0-b7b1-24b62b6df19b",
+                              "sub_category_title": "Uzbek adabiyoti"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/update/{productId}": {
+      "patch": {
+        "tags": ["Products part"],
+        "summary": "update products by id",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "productId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "product_title": "Ertaklar uchun"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/delete/{productId}": {
+      "delete": {
+        "tags": ["Products part"],
+        "summary": " product delete",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "productId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/buy": {
+      "post": {
+        "tags": ["Products part"],
+        "summary": " product buy",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+
+                "properties": {
+                  "categoryId": {
+                    "type": "string"
+                  },
+                  "sub_category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "productId": "8bc07d59-f1b9-488b-9279-c96177b8f3e0"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/discount": {
+      "put": {
+        "tags": ["Products part"],
+        "summary": "give discount to product",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "productId": "a8b89dd7-1e2d-4820-8a43-c58e3e83638d",
+                  "discount": 12
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/rate": {
+      "put": {
+        "tags": ["Products part"],
+        "summary": "give rate to product",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "productId": "a8b89dd7-1e2d-4820-8a43-c58e3e83638d",
+                  "rate": 3
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/discount": {
+      "get": {
+        "tags": ["Products part"],
+        "summary": "get all discount products products",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "product_id": "a8b89dd7-1e2d-4820-8a43-c58e3e83638d",
+                          "product_title": "Sezirning hukmronligi",
+                          "product_price": "29000",
+                          "product_rate": [3],
+                          "product_description": null,
+                          "made_in": "Italy",
+                          "discount": 12,
+                          "product_img": "http://books.com"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/rating": {
+      "get": {
+        "tags": ["Products part"],
+        "summary": "get all products by rate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "product_id": "a8b89dd7-1e2d-4820-8a43-c58e3e83638d",
+                          "product_rate": [3],
+                          "totalrate": "3"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/pagination?page={page}&limit={limit}": {
+      "get": {
+        "tags": ["Products part"],
+        "summary": "get all products",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "id": "d80eed01-6a30-4a9a-8d81-a10db45455ea",
+                          "product_title": "Uzbek adabiyoti",
+                          "product_price": 21000
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/comments/get": {
+      "get": {
+        "tags": ["Comments part"],
+        "summary": "get all comments",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "comment_id": "1734a7ef-1562-4014-9590-e0bdc4876903",
+                          "user_id": "21909bcf-b6af-4780-828f-79fbffcbb543",
+                          "comment_title": "musical poem juda zor"
+                        },
+                        {
+                          "comment_id": "f58b3411-0f29-43bb-b3d0-a709741f2dd8",
+                          "user_id": "21909bcf-b6af-4780-828f-79fbffcbb543",
+                          "comment_title": "musical poem juda zor"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/comments/add": {
+      "post": {
+        "tags": ["Comments part"],
+        "summary": "add new comment",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "title": "musical poem juda zor",
+                  "productId": "2f634edf-4906-4e90-b3cb-c64a5af77b3c"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "id": "d80eed01-6a30-4a9a-8d81-a10db45455ea",
+                          "category_title": "Kitoblar",
+                          "subCategory": [
+                            {
+                              "id": "8fc1655e-fd2e-4cf0-b7b1-24b62b6df19b",
+                              "sub_category_title": "Uzbek adabiyoti"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/comments/update/{commentId}": {
+      "patch": {
+        "tags": ["Comments part"],
+        "summary": "update comment by id",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "commentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category_title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "title": "Music poem the best one of them"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/comments/delete/{commentId}": {
+      "delete": {
+        "tags": ["Comments part"],
+        "summary": " comment delete",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "commentId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/products/sorted": {
+      "get": {
+        "tags": ["Products part"],
+        "summary": "get all products and order by desc title",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Successful",
+                      "description": "Message of the response"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "format": "int64",
+                      "default": "200",
+                      "description": "Status of the response"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "view Category",
+                      "default": [
+                        {
+                          "product_id": "a8b89dd7-1e2d-4820-8a43-c58e3e83638d",
+                          "product_title": "Sezirning hukmronligi",
+                          "product_price": "29000",
+                          "product_rate": [3],
+                          "product_description": null,
+                          "made_in": "Italy",
+                          "discount": 12,
+                          "product_img": "http://books.com",
+                          "created_at": "2023-02-11T00:36:06.419Z"
+                        },
+                        {
+                          "product_id": "f6f2607d-9ae1-4d07-8d98-d516dd3742c2",
+                          "product_title": "Qora kostyum",
+                          "product_price": "2100000",
+                          "product_rate": [],
+                          "product_description": null,
+                          "made_in": "Uzbekistan",
+                          "discount": null,
+                          "product_img": "http://books.com",
+                          "created_at": "2023-02-11T00:36:06.419Z"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+
+    "swaggerschema": {
+      "UsersRegister": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string",
+            "example": "Ali"
+          },
+          "lastname": {
+            "type": "string",
+            "example": "Choriyev"
+          },
+          "email": {
+            "type": "string",
+            "example": "ali@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345678"
+          }
+        }
+      },
+      "UsersLogin": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string",
+            "example": "Aziz"
+          },
+          "email": {
+            "type": "string",
+            "example": "aziz@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "123456"
+          }
+        }
+      },
+      "UsersLogout": {
+        "type": "object",
+        "properties": {
+          "bearer_token": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlwiMTE1ZTJlY2MtMzdiMS00ZWE0LWJhZWItNzA4YmIzYzBkYWNkXCIiLCJpYXQiOjE2NzYwNTUxNjYsImV4cCI6MTY3NjA5MTE2Nn0.62rmExEESNoyZ1_RXq1XYuN412saZ2jmqUUgDabGngs"
+          }
+        }
+      },
+      "UsersUpdate": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string",
+            "example": "Ali",
+            "required": false
+          },
+          "lastname": {
+            "type": "string",
+            "example": "Choriyev",
+            "required": false
+          },
+          "email": {
+            "type": "string",
+            "example": "ali@gmail.com",
+            "required": false
+          },
+          "password": {
+            "type": "string",
+            "example": "12345678",
+            "required": false
+          }
+        }
+      }
+    }
+  }
+}
